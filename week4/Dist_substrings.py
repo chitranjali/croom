@@ -1,22 +1,14 @@
-import itertools
-
+'''
+Given a string, we need to find the total number of its distinct substrings.
+'''
 s = input()
 no = 0
-for i in range(1, len(s) + 1):
-    sub_s = itertools.permutations(s,i)
-    non_rep = set(sub_s)
-    for i, sub in enumerate(non_rep):
-        print(no, sub)
-        no = no + 1
-print()
-print()
-print()
-print()
+l = []
 
-no = 0
 for i in range(1, len(s) + 1):
-    sub_s = itertools.combinations(s,i)
-    non_rep = set(sub_s)
-    for i, sub in enumerate(non_rep):
-        print(no, sub)
-        no = no + 1
+    for j in range(0, i):
+        sub = s[j:i]
+        if sub not in l:
+            l.append(sub)
+
+print(len(l))
